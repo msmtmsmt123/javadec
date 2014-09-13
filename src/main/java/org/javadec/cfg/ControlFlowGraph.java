@@ -46,24 +46,26 @@ public class ControlFlowGraph {
             AbstractInsnNode endInsn = insnList.get(basicBlock.end);
             if (endInsn instanceof JumpInsnNode) {
                 JumpInsnNode jump = (JumpInsnNode) endInsn;
-                basicBlock.succ.add(blockMap.get(jump.label));
+                basicBlock.addSucc(blockMap.get(jump.label));
             }
             if (!isGoto(endInsn) && !isReturn(endInsn) && !isThrow(endInsn)) {
-                basicBlock.succ.add(blockMap.get(endInsn.getNext()));
+                basicBlock.addSucc(blockMap.get(endInsn.getNext()));
             }
         }
     }
 
     private BasicBlock startBlock(int startIndex) {
-        if (startIndex >= insnList.size()) return null;
+        if (startIndex >= insnList.size()) {
+            return null;
+        }
 
         AbstractInsnNode insn = insnList.get(startIndex);
         BasicBlock block = blockMap.get(insn);
-        if (block != null) return block;
+        if (block != null) {
+            return block;
+        }
 
-        block = new BasicBlock();
-        block.start = startIndex;
-        block.end = startIndex;
+        block = new BasicBlock(startIndex);
         blockMap.put(insn, block);
         return block;
     }

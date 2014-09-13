@@ -15,4 +15,11 @@ public class ClassFileReader {
         return classNode;
     }
 
+    public static ClassNode readClass(byte[] bytes) throws IOException {
+        ClassNode classNode = new ClassNode();
+        ClassReader classReader = new ClassReader(bytes);
+        classReader.accept(classNode, 0);
+        return classNode;
+    }
+
 }
