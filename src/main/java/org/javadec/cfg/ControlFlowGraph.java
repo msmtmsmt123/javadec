@@ -1,4 +1,4 @@
-package org.javadec;
+package org.javadec.cfg;
 
 
 import org.objectweb.asm.tree.AbstractInsnNode;
@@ -9,7 +9,7 @@ import org.objectweb.asm.tree.MethodNode;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static org.objectweb.asm.Opcodes.*;
+import static org.javadec.InsnUtils.*;
 
 public class ControlFlowGraph {
     final Map<AbstractInsnNode, BasicBlock> blockMap = new LinkedHashMap<>();
@@ -22,32 +22,6 @@ public class ControlFlowGraph {
         insnList = methodNode.instructions;
         identifyBlocks();
         connectBlocks();
-    }
-
-    private static boolean isGoto(AbstractInsnNode insn) {
-        return insn.getOpcode() == GOTO;
-    }
-
-    private static boolean isThrow(AbstractInsnNode insn) {
-        return insn.getOpcode() == ATHROW;
-    }
-
-    private static boolean isReturn(AbstractInsnNode insn) {
-        int opcode = insn.getOpcode();
-        return opcode == IRETURN
-                || opcode == LRETURN
-                || opcode == FRETURN
-                || opcode == DRETURN
-                || opcode == ARETURN
-                || opcode == RETURN;
-    }
-
-    private static boolean isJump(AbstractInsnNode insn) {
-        return insn.getType() == AbstractInsnNode.JUMP_INSN;
-    }
-
-    private static boolean isLabel(AbstractInsnNode insn) {
-        return insn != null && insn.getType() == AbstractInsnNode.LABEL;
     }
 
     private void identifyBlocks() {

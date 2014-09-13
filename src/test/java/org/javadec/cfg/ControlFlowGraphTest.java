@@ -1,5 +1,7 @@
-package org.javadec;
+package org.javadec.cfg;
 
+import org.javadec.ClassFileReader;
+import org.javadec.TestHelper;
 import org.junit.Test;
 import org.objectweb.asm.tree.ClassNode;
 

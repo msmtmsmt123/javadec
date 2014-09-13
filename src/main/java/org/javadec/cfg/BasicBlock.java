@@ -1,4 +1,4 @@
-package org.javadec;
+package org.javadec.cfg;
 
 import java.util.ArrayList;
 import java.util.List;
