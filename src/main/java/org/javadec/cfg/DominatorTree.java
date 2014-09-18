@@ -72,7 +72,7 @@ public class DominatorTree {
      * @param node The node of interest
      * @return immediate dominator (if it has one).
      */
-    public BasicBlock getIdom(BasicBlock node) {
+    public BasicBlock idom(BasicBlock node) {
         return node(idom[dfnum(node)]);
     }
 

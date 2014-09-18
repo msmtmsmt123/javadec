@@ -49,14 +49,14 @@ public class DominatorTreeTest {
         //   4  6
         //      |
         //      7
-        assertNull(tree.getIdom(v0));
-        assertEquals(v0, tree.getIdom(v1));
-        assertEquals(v1, tree.getIdom(v2));
-        assertEquals(v1, tree.getIdom(v3));
-        assertEquals(v3, tree.getIdom(v4));
-        assertEquals(v1, tree.getIdom(v5));
-        assertEquals(v2, tree.getIdom(v6));
-        assertEquals(v6, tree.getIdom(v7));
+        assertNull(tree.idom(v0));
+        assertEquals(v0, tree.idom(v1));
+        assertEquals(v1, tree.idom(v2));
+        assertEquals(v1, tree.idom(v3));
+        assertEquals(v3, tree.idom(v4));
+        assertEquals(v1, tree.idom(v5));
+        assertEquals(v2, tree.idom(v6));
+        assertEquals(v6, tree.idom(v7));
         System.out.println(tree);
     }
 }
